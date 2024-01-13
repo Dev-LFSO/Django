@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+</head>
+<body>
+    <h1>Você está na Página Principal</h1>
+    <a href="{% url 'criar-sala' %}">Criar Sala</a>
+    <div>
+        {% for sala in salas %}
+        <div>
+            <a href="{% url 'atualizar-sala' sala.id %}">Editar</a>
+            <a href="{% url 'apagar-sala' sala.id %}">Apagar</a>
+            <span>@{{sala.usuario.username}}</span>
+            <h5>{{sala.id}} --> <a href="{% url 'sala' sala.id %}">{{sala.nome}}</a></h5>
+            <small>{{sala.topico.nome}}</small>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %}
