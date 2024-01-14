@@ -6,22 +6,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
+    <style>
+        .home-container{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+    </style>
 </head>
 <body>
-    <h1>Você está na Página Principal</h1>
-    <a href="{% url 'criar-sala' %}">Criar Sala</a>
-    <div>
-        {% for sala in salas %}
+    <div class="home-container">
         <div>
-            <a href="{% url 'atualizar-sala' sala.id %}">Editar</a>
-            <a href="{% url 'apagar-sala' sala.id %}">Apagar</a>
-            <span>@{{sala.usuario.username}}</span>
-            <h5>{{sala.id}} --> <a href="{% url 'sala' sala.id %}">{{sala.nome}}</a></h5>
-            <small>{{sala.topico.nome}}</small>
+            <h3>Topicos</h3>
             <hr>
+            <div>
+                <a href="{% url 'home' %}">Todos</a>
+            </div>
+            {% for topico in topicos %}
+            <div>
+                <a href="{% url 'home' %}?q={{topico.nome}}">{{topico.nome}}</a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        <div>
+            <h1>Você está na Página Principal</h1>
+            <h5>{{qntd_salas}} salas disponíveis</h5>
+            <a href="{% url 'criar-sala' %}">Criar Sala</a>
+            <div>
+                {% for sala in salas %}
+                <div>
+                    <a href="{% url 'atualizar-sala' sala.id %}">Editar</a>
+                    <a href="{% url 'apagar-sala' sala.id %}">Apagar</a>
+                    <span>@{{sala.usuario.username}}</span>
+                    <h5>{{sala.id}} --> <a href="{% url 'sala' sala.id %}">{{sala.nome}}</a></h5>
+                    <small>{{sala.topico.nome}}</small>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
+    
 </body>
 </html>
 {% endblock %}
