@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/login.css" %}">
+{% endblock %}
+{% block content %}
+<main>
+    <form method="post" class="form-login">
+        {% csrf_token %}
+        <h1 class="title">LOGIN</h1>
+        <div class="inputs">
+            <label for="email">Email:</label>
+            <input type="text" class="input-email" name="email" autocomplete="off" placeholder="email@gmail.com" required>
+            <label for="password">Password:</label>
+            <input type="password" class="input-password" name="password" autocomplete="off" required>
+            <button type="submit" class="button-submit">Submit</button>
+        </div>
+        {% if error %}
+        <div class="error">
+            <p>{{ error }}!</p>
+        </div>
+    {% endif %}
+    </form>
+</main>
+{% endblock %}
