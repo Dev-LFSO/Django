@@ -10,10 +10,14 @@
             <li><a href="#"><i class="fa-regular fa-message fa-sm"></i>Messages</a></li>
         </ul>
     </aside>
-    <div class="news">
+    <article class="news">
         {% for news in news_list %}
-        <p>{{ news }}</p>
+        <div class="news-{{ forloop.counter }}">
+            <p class="news-title">{{ news.title }}</p>
+            <p class="news-date">{{ news.datetime }}</p>
+            <a href="{{ news.link }}" class="news-link" target="_blank">Link</a>
+        </div>
         {% endfor %}
-    </div>
+    </article>
 </main>
 {% endblock %}
