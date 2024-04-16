@@ -1,7 +1,19 @@
 {% extends "main.html" %}
 
 {% block content %}
-    <main>
-        
-    </main>
+<main>
+    <aside>
+        <ul class="list-actions">
+            <li><a href="#"><i class="fa-solid fa-newspaper fa-sm"></i>Posts</a></li>
+            <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-sm"></i>Search</a></li>
+            <li><a href="#"><i class="fa-solid fa-user-large fa-sm"></i>Profile</a></li>
+            <li><a href="#"><i class="fa-regular fa-message fa-sm"></i>Messages</a></li>
+        </ul>
+    </aside>
+    <div class="news">
+        {% for news in news_list %}
+        <p>{{ news }}</p>
+        {% endfor %}
+    </div>
+</main>
 {% endblock %}
