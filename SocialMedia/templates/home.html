@@ -4,20 +4,27 @@
 <main>
     <aside>
         <ul class="list-actions">
-            <li><a href="#"><i class="fa-solid fa-newspaper fa-sm"></i>Posts</a></li>
+            <li><a href="#"><i class="fa-solid fa-plus"></i>New Post</a></li>
+            <li><a href="{% url "posts:all_posts" %}"><i class="fa-solid fa-newspaper fa-sm"></i>Posts</a></li>
             <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-sm"></i>Search</a></li>
-            <li><a href="#"><i class="fa-solid fa-user-large fa-sm"></i>Profile</a></li>
             <li><a href="#"><i class="fa-regular fa-message fa-sm"></i>Messages</a></li>
+            <li><a href="#"><i class="fa-solid fa-user-large fa-sm"></i>Profile</a></li>
         </ul>
     </aside>
-    <article class="news">
-        {% for news in news_list %}
-        <div class="news-{{ forloop.counter }}">
-            <p class="news-title">{{ news.title }}</p>
-            <p class="news-date">{{ news.datetime }}</p>
-            <a href="{{ news.link }}" class="news-link" target="_blank">Link</a>
-        </div>
-        {% endfor %}
-    </article>
+    <div class="content">
+        <nav class="title-news">News</nav>
+        <article class="news">
+            {% for news in news_list %}
+            <div class="news-{{ forloop.counter }}">
+                <p class="news-title">{{ news.title }}</p>
+                <p class="news-date">{{ news.publishedAt }}</p>
+                {% if news.urlToImage %}
+                <img src="{{ news.urlToImage }}" alt="News Image" class="news-image">
+                {% endif %}
+                <a href="{{ news.url }}" class="news-link" target="_blank">Link</a>
+            </div>
+            {% endfor %}
+        </article>
+    </div>
 </main>
 {% endblock %}
