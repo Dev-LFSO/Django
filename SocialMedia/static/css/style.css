@@ -10,7 +10,7 @@
 body{
     width: 100%;
     height: 100%;
-    min-width: 1900px;
+    min-width: fit-content;
     max-height: 800px;
 }
 
@@ -44,6 +44,7 @@ section{
 }
 
 main{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -211,7 +212,7 @@ footer {
     width: 90%;
     margin: 8px;
     font-family: 'Montserrat';
-    font-size: 1.8vw;
+    font-size: clamp(20px,4vw,30px);
 }
 
 .list-actions i{
@@ -305,6 +306,7 @@ footer {
 
 .post-container {
     width: 60vw;
+    height: fit-content;
     padding: 15px;
     margin-bottom: 10px;
     display: flex;
@@ -363,7 +365,7 @@ footer {
 }
 
 .likes p{
-    margin-top: 2px;
+    margin-top: 5px;
     text-align: center;
     text-decoration: none;
     color: #0E0F19;
@@ -392,6 +394,14 @@ footer {
     color: #6e1919;
 }
 
+.mood{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width: 1900px) {
     main {
       display: flex;
@@ -412,7 +422,10 @@ footer {
     .list-actions{
         display: flex;
         flex-direction: row;
-        font-size: 4vw;
+        font-size: clamp(30px,2.5vw,40px);
+    }
+    .mood{
+        width: 100%;
     }
 }
 

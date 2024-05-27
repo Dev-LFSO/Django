@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 {% load static %}
 {% block content %}
-<main style="justify-content: flex-start; max-height: 90vh;">
+<main style="max-height: 90vh;">
     <aside>
         <ul class="list-actions">
             <li><a href="#"><i class="fa-solid fa-plus"></i>New Post</a></li>
@@ -27,6 +27,9 @@
         </div>
         {% endfor %}
     </section>
+    <div class="mood">
+        <p>Teste</p>
+    </div>
 </main>
 <script src="{% static "js/script.js" %}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
