@@ -1,6 +1,6 @@
 function adjustTextareaHeight(textarea) {
     textarea.style.height = 'auto';
-    textarea.style.height = (textarea.scrollHeight - 15) + 'px';
+    textarea.style.height = (textarea.scrollHeight - 20) + 'px';
 }
 
 document.addEventListener('DOMContentLoaded', function () {

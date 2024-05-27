@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post
+from django.db.models import Count
 from django.http import JsonResponse
 
 
@@ -8,7 +9,8 @@ from django.http import JsonResponse
 @login_required(login_url='users:login')
 def all_posts(request):
     posts = Post.objects.all()
-    return render(request, 'posts/all_posts.html', {'posts': posts})
+    more_liked_posts = Post.objects.all().order_by('-likes')[0:4]
+    return render(request, 'posts/all_posts.html', {'posts': posts, 'more_liked_posts':more_liked_posts})
 
 def like_post(request, post_id):
     post = Post.objects.get(id=post_id)

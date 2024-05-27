@@ -1,7 +1,7 @@
 {% extends "main.html" %}
 {% load static %}
 {% block content %}
-<main style="max-height: 90vh;">
+<main>
     <aside>
         <ul class="list-actions">
             <li><a href="#"><i class="fa-solid fa-plus"></i>New Post</a></li>
@@ -13,7 +13,7 @@
     </aside>
     <section>
         {% for post in posts %}
-        <div class="post-container">
+        <div class="post-container" id="{{ post.id }}">
             <h1 class="post-title">{{ post.title }}</h1>
             <p class="post-user-date">Published for {{ post.user }} - {{ post.data_posted|date:"H:i  m/d/Y" }}</p>
             <textarea readonly class="post-content" name="post-textarea" id="post-{{ forloop.counter }}" cols="30" rows="1">{{ post.content }}</textarea>
@@ -28,7 +28,21 @@
         {% endfor %}
     </section>
     <div class="mood">
-        <p>Teste</p>
+        <div class="title-posts-more-liked">
+            <h1>Posts More Liked</h1>
+        </div>
+        <div class="posts-more-liked">
+            {% for post in more_liked_posts %}
+                <div class="post-{{ forloop.counter }}">
+                    <a href="#{{ post.id }}">{{ post.title }}</a>
+                    <ul>
+                        <li>{{ post.likes.count }} Likes</li>
+                        <li>Published for {{ post.user }}</li>
+                        <li>Posted on: {{ post.data_posted|date:"H:i  m/d/Y" }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </main>
 <script src="{% static "js/script.js" %}"></script>
