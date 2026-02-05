@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-kdbg(1qf$6411i0fb(vfx0e%hj$90t)q^-zmfngacno4*21u5s
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '.onrender.com',
+    '*',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -129,6 +129,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
